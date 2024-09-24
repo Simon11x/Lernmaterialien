@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Collatz-Problem</title>
+</head>
+<body>
+    <h1>Collatz-Folge und das 3n + 1 Problem ...</h1>
+    <script>
+      function collatz(){
+       var startzahl = parseInt(document.getElementById("startzahl").value);
+       var ergebnis = document.getElementById("ergebnis");
+       ergebnis.innerHTML="";
+    
+    
+   while (startzahl !== 1){
+    if(startzahl % 2 == 0){
+        startzahl = startzahl / 2;
+    }else{
+        startzahl = 3* startzahl + 1;
+    }
+    ergebnis.innerHTML += startzahl + "->";
+    
+} 
+    
+      }
+
+    </script>
+
+    <input type ="number" id="startzahl" min="1">
+    <button onclick="collatz()"> Berechnen </button>
+    <div id="ergebnis"></div>
+
+    <div>
+        <a href="../index.html">Zurück zur Startseite</a>
+    </div>
+</body>
+</html>

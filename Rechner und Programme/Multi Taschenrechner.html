@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)file:///C:/Users/25ASS1-21/Desktop/Multi-Taschenrechner-von-Enes-F-Karabag.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erweiterter Taschenrechner</title>
+
+    <script>
+        var vZ1;
+        var vZ2;
+        var vErgebnis;
+
+        function fAddition() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vZ2 = parseFloat(document.getElementById("idZ2").value);
+            vErgebnis = vZ1 + vZ2;
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+
+        function fSubtraktion() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vZ2 = parseFloat(document.getElementById("idZ2").value);
+            vErgebnis = vZ1 - vZ2;
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+
+        function fMultiplikation() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vZ2 = parseFloat(document.getElementById("idZ2").value);
+            vErgebnis = vZ1 * vZ2;
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+
+        function fDividieren() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vZ2 = parseFloat(document.getElementById("idZ2").value);
+
+            if (vZ2 == 0) {
+                vErgebnis = "Keine Division durch 0";
+            } else {
+                vErgebnis = vZ1 / vZ2;
+            }
+
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+
+        function fModulo() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vZ2 = parseFloat(document.getElementById("idZ2").value);
+
+            if (vZ2 == 0) {
+                vErgebnis = "Ungültiger Modulo-Wert";
+            } else {
+                vErgebnis = vZ1 % vZ2;
+            }
+
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+
+        function fQuadratwurzel() {
+            vZ1 = parseFloat(document.getElementById("idZ1").value);
+            vErgebnis = Math.sqrt(vZ1);
+            document.getElementById("idErgebnis").textContent = "Ergebnis: " + vErgebnis;
+        }
+    </script>
+</head>
+<body>
+    
+    
+    <h1>Multi-Taschenrechner</h1>
+    <h5>von Eduardo und Simon </h5>
+
+    (<input id="idZ1" type="number" value="">)
+    (<input id="idZ2" type="number" value="">)
+
+    <br><br>
+    <button onclick="fAddition();">Addition</button><br><br>
+    <button onclick="fSubtraktion();">Subtraktion</button><br><br>
+    <button onclick="fMultiplikation();">Multiplikation</button><br><br>
+    <button onclick="fDividieren();">Dividieren</button><br><br>
+    <button onclick="fModulo();">Modulo</button><br><br>
+    <button onclick="fQuadratwurzel();">Quadratwurzel</button><br><br>
+    
+    <div id="idErgebnis">Ergebnis ...</div>
+    <div>
+        <a href="../index.html">Zurück zur Startseite</a>
+    </div>
+
+</body></html>
