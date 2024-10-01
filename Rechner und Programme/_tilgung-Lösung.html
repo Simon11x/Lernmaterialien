@@ -1,0 +1,63 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Aufgabe</title>
+		
+		<script>
+			function fTilgungsplan() {
+			/*
+			*/
+
+			var vKreditsumme	= parseFloat(document.getElementById("ID_Kreditsumme").value);
+			var vLaufzeit		= parseFloat(document.getElementById("ID_Laufzeit").value);
+			var vZinssatz		= parseFloat(document.getElementById("ID_Zinssatz").value) / 100;
+			var vZinsen;
+			var vZinsenGesamt=0;;
+			var vAnnuitaet;
+			var vTilgung;
+			var vRestschuld	= vKreditsumme;
+			var vTemp;
+			var vAusgabe;
+			var vStartjahr = 1;
+
+			vAusgabe 	= "<table border=1><tr><th>Jahr</th><th>Schuld in €</th>"
+						+ "<th>Zinsen in €</th><th>Annuität in €</th>"
+						+ "<th>Tilgung in €</th><th>Restschuld in €</th></tr>";
+			vAnnuitaet 	= vKreditsumme * (Math.pow(1+vZinssatz,vLaufzeit) * vZinssatz) / (Math.pow(1+vZinssatz,vLaufzeit) - 1);
+
+			while(vStartjahr <= vLaufzeit){
+			vZinsen 	= vKreditsumme * vZinssatz;
+			vTilgung	= vAnnuitaet - vZinsen;
+			vTemp = vRestschuld;
+			vRestschuld =  vKreditsumme - vTilgung;
+
+
+			vAusgabe 	+="<tr><td>" + vStartjahr + "</td><td>" + vTemp.toFixed(2) + "</td>"
+						+ "<td>" + vZinsen.toFixed(2) + "</td><td>" + vAnnuitaet.toFixed(2) + "</td>"
+						+ "<td>" + vTilgung.toFixed(2) + "</td><td>" + vRestschuld.toFixed(2) + "</td></tr>";
+					vKreditsumme = vRestschuld;
+					vZinsenGesamt=vZinsenGesamt + vZinsen;
+			vStartjahr++;
+
+
+			}
+
+			vAusgabe += "</table>";
+			vAusgabe += "Zinsen insgesamt: " + vZinsenGesamt.toFixed(2);
+			document.getElementById("idAusgabe").innerHTML = vAusgabe;
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>Tilgungsplanrechner</h1>
+		Kreditbetrag: <input type="text" id="ID_Kreditsumme" value="400000"> €	<br>
+		Laufzeit: <input type="text" id="ID_Laufzeit" value="20">		Jahren		<br>
+		Zinssatz: <input type="text" id="ID_Zinssatz" value="5">	%			<br><br>
+		<button onclick="fTilgungsplan();">Berechne Tilgungsplan</button>
+		<div id="idAusgabe"><table border="1"><tbody><tr><th>Jahr</th><th>Schuld in €</th><th>Zinsen in €</th><th>Annuität in €</th><th>Tilgung in €</th><th>Restschuld in €</th></tr><tr><td>1</td><td>400000.00</td><td>20000.00</td><td>32097.03</td><td>12097.03</td><td>387902.97</td></tr><tr><td>2</td><td>387902.97</td><td>19395.15</td><td>32097.03</td><td>12701.89</td><td>375201.08</td></tr><tr><td>3</td><td>375201.08</td><td>18760.05</td><td>32097.03</td><td>13336.98</td><td>361864.10</td></tr><tr><td>4</td><td>361864.10</td><td>18093.20</td><td>32097.03</td><td>14003.83</td><td>347860.27</td></tr><tr><td>5</td><td>347860.27</td><td>17393.01</td><td>32097.03</td><td>14704.02</td><td>333156.25</td></tr><tr><td>6</td><td>333156.25</td><td>16657.81</td><td>32097.03</td><td>15439.22</td><td>317717.02</td></tr><tr><td>7</td><td>317717.02</td><td>15885.85</td><td>32097.03</td><td>16211.18</td><td>301505.84</td></tr><tr><td>8</td><td>301505.84</td><td>15075.29</td><td>32097.03</td><td>17021.74</td><td>284484.10</td></tr><tr><td>9</td><td>284484.10</td><td>14224.20</td><td>32097.03</td><td>17872.83</td><td>266611.27</td></tr><tr><td>10</td><td>266611.27</td><td>13330.56</td><td>32097.03</td><td>18766.47</td><td>247844.80</td></tr><tr><td>11</td><td>247844.80</td><td>12392.24</td><td>32097.03</td><td>19704.80</td><td>228140.00</td></tr><tr><td>12</td><td>228140.00</td><td>11407.00</td><td>32097.03</td><td>20690.03</td><td>207449.97</td></tr><tr><td>13</td><td>207449.97</td><td>10372.50</td><td>32097.03</td><td>21724.54</td><td>185725.43</td></tr><tr><td>14</td><td>185725.43</td><td>9286.27</td><td>32097.03</td><td>22810.76</td><td>162914.67</td></tr><tr><td>15</td><td>162914.67</td><td>8145.73</td><td>32097.03</td><td>23951.30</td><td>138963.36</td></tr><tr><td>16</td><td>138963.36</td><td>6948.17</td><td>32097.03</td><td>25148.87</td><td>113814.50</td></tr><tr><td>17</td><td>113814.50</td><td>5690.72</td><td>32097.03</td><td>26406.31</td><td>87408.19</td></tr><tr><td>18</td><td>87408.19</td><td>4370.41</td><td>32097.03</td><td>27726.63</td><td>59681.56</td></tr><tr><td>19</td><td>59681.56</td><td>2984.08</td><td>32097.03</td><td>29112.96</td><td>30568.60</td></tr><tr><td>20</td><td>30568.60</td><td>1528.43</td><td>32097.03</td><td>30568.60</td><td>0.00</td></tr></tbody></table>Zinsen insgesamt: 1528.4302322036538</div>
+		<div>
+            <a href="../index.html">Zurück zur Startseite</a>
+        </div>
+
+
+</body></html>
